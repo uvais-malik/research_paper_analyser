@@ -243,12 +243,7 @@ function MessageBubble({ msg }) {
   if (isUser) {
     return (
       <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 20 }}>
-        <div style={{
-          maxWidth: "75%", background: "linear-gradient(135deg, #7c3aed, #4f46e5)",
-          borderRadius: "18px 18px 4px 18px", padding: "12px 16px",
-          fontSize: 14, color: "#fff", lineHeight: 1.6,
-          boxShadow: "0 4px 20px rgba(124,58,237,0.3)",
-        }}>
+        <div className="message-bubble message-user">
           {msg.content}
         </div>
       </div>
@@ -276,10 +271,7 @@ function MessageBubble({ msg }) {
           )}
 
           {/* Answer text */}
-          <div style={{
-            background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
-            borderRadius: "4px 18px 18px 18px", padding: "14px 18px",
-          }}>
+          <div className="message-bubble message-assistant">
             <div className="markdown-body" style={{ fontSize: 14, lineHeight: 1.75, color: "rgba(255,255,255,0.85)" }}>
               <ReactMarkdown rehypePlugins={[rehypeSanitize]}>
                 {msg.content || (msg.streaming ? "▍" : "")}
@@ -636,15 +628,12 @@ export default function App() {
 
   /* ── Render ─────────────────────────────────────────────────────────────── */
   return (
-    <div style={{ display: "flex", height: "100vh", background: "#0a0b14", color: "#fff", fontFamily: "'Inter', sans-serif", overflow: "hidden" }}>
+    <div className="app-container">
 
       {/* ── Sidebar ────────────────────────────────────────────────────────── */}
-      <div style={{
-        width: sidebarOpen ? 300 : 0, minWidth: sidebarOpen ? 300 : 0,
-        transition: "all .3s ease", overflow: "hidden",
-        borderRight: "1px solid rgba(255,255,255,0.06)",
-        display: "flex", flexDirection: "column",
-        background: "rgba(255,255,255,0.02)",
+      <div className="sidebar glass-panel" style={{
+        width: sidebarOpen ? 320 : 0, minWidth: sidebarOpen ? 320 : 0,
+        transition: "width .3s ease", overflow: "hidden", borderRight: "none"
       }}>
         <div style={{ padding: "20px 16px 12px", flexShrink: 0 }}>
           {/* Logo */}
@@ -659,7 +648,7 @@ export default function App() {
               }}
             />
             <div>
-              <div style={{ fontWeight: 800, fontSize: 16, letterSpacing: "-.02em", background: "linear-gradient(90deg,#c4b5fd,#818cf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>NEXUS RAG</div>
+              <div style={{ fontWeight: 800, fontSize: 16, letterSpacing: "-.02em", background: "linear-gradient(90deg,#c4b5fd,#818cf8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>SCHOLARMIND</div>
               <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", letterSpacing: ".06em" }}>RESEARCH AI</div>
             </div>
           </div>
@@ -756,7 +745,7 @@ export default function App() {
       </div>
 
       {/* ── Main chat area ─────────────────────────────────────────────────── */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <div className="chat-area">
 
         {/* Header */}
         <div style={{
@@ -864,34 +853,6 @@ export default function App() {
 
       <Toasts toasts={toasts} remove={removeToast} />
 
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body, #root { height: 100%; }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
-        @keyframes spin     { to { transform: rotate(360deg); } }
-        @keyframes float    { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        @keyframes slideUp  { from { transform: translateY(12px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        @keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
-        .markdown-body p    { margin-bottom: .8em; }
-        .markdown-body p:last-child { margin-bottom: 0; }
-        .markdown-body h1,.markdown-body h2,.markdown-body h3 { font-weight: 700; margin: 1.2em 0 .5em; color: rgba(255,255,255,0.9); }
-        .markdown-body h2 { font-size: 1.05em; }
-        .markdown-body h3 { font-size: .95em; }
-        .markdown-body ul,.markdown-body ol { padding-left: 1.5em; margin-bottom: .8em; }
-        .markdown-body li { margin-bottom: .3em; }
-        .markdown-body strong { color: rgba(255,255,255,0.95); font-weight: 600; }
-        .markdown-body em { color: #c4b5fd; font-style: italic; }
-        .markdown-body code { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.25); border-radius: 4px; padding: 1px 5px; font-size: .85em; color: #c4b5fd; font-family: 'Fira Code', monospace; }
-        .markdown-body pre  { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; overflow-x: auto; margin-bottom: .8em; }
-        .markdown-body pre code { background: none; border: none; padding: 0; font-size: .9em; color: rgba(255,255,255,0.8); }
-        .markdown-body blockquote { border-left: 3px solid rgba(139,92,246,0.5); padding-left: 12px; color: rgba(255,255,255,0.55); font-style: italic; margin-bottom: .8em; }
-        .markdown-body a { color: #a78bfa; text-decoration: underline; }
-        .markdown-body hr { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 1em 0; }
-      `}</style>
     </div>
   );
 }
