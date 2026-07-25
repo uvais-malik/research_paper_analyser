@@ -130,7 +130,7 @@ export async function retrieveChunks(question, queries, paperIds, topK, useMMR) 
 const ANSWER_PROMPT = ChatPromptTemplate.fromTemplate(`
 You are a helpful, precise document assistant. Answer the question using ONLY the provided context excerpts.
 The documents may be research papers, resumes, reports, books, or any other type of PDF.
-Cite sources inline as [Source {number}, Page {page}].
+Cite sources inline as [Source {{number}}, Page {{page}}].
 If the context does not contain enough information to answer fully, say what you can find and note what is missing — never hallucinate facts.
 
 Context:

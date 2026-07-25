@@ -45,7 +45,23 @@ async function extractPages(buffer) {
     const options = {
         pagerender: function (pageData) {
             return pageData.getTextContent().then((textContent) => {
-                const text = textContent.items.map((item) => item.str).join(" ");
+                let text = "";
+                let lastY = null;
+                for (const item of textContent.items) {
+                    if (lastY !== null && Math.abs(item.transform[5] - lastY) > 5) {
+                        // If gap is large, treat as new paragraph
+                        if (Math.abs(item.transform[5] - lastY) > 15) {
+                            text += "\n\n";
+                        } else {
+                            text += "\n";
+                        }
+                    } else if (lastY !== null) {
+                        text += " ";
+                    }
+                    text += item.str.trim();
+                    lastY = item.transform[5];
+                }
+                text = text.replace(/\\n{3,}/g, "\\n\\n").trim();
                 pages.push({ pageNum: pageData.pageNumber, text });
                 return text;
             });
