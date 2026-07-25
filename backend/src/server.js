@@ -22,12 +22,7 @@ const allowedOrigins = process.env.CORS_ORIGIN
     : ["http://localhost:5173", "http://localhost:3000"];
 
 app.use(cors({
-    origin: (origin, cb) => {
-        // Allow requests with no origin (Render health checks, curl)
-        if (!origin) return cb(null, true);
-        if (allowedOrigins.includes(origin)) return cb(null, true);
-        cb(new Error(`CORS: origin "${origin}" not allowed`));
-    },
+    origin: "*",
     credentials: true,
 }));
 
