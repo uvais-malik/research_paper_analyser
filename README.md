@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ Nexus RAG
+# ⚡ ScholarMind
 
 ### Production-Grade Retrieval-Augmented Generation for Research Papers
 
@@ -14,7 +14,7 @@
 
 **Upload research PDFs → Ask questions → Get cited, confidence-scored answers in real time**
 
-[Live Demo](https://nexus-rag-alpha.vercel.app) · [Report Bug](https://github.com/Mdhummad/nexus-rag/issues)
+[Live Demo](https://nexus-rag.vercel.app) · [Report Bug](https://github.com/uvais-malik/research_paper_analyser/issues)
 
 </div>
 
@@ -22,7 +22,7 @@
 
 ## 🧠 What Is This?
 
-**Nexus RAG** is a full-stack, production-ready **Retrieval-Augmented Generation (RAG)** system for academic research. It lets you upload multiple research PDFs and ask complex questions across all of them — receiving detailed, inline-cited answers grounded exclusively in the uploaded documents.
+**ScholarMind** is a full-stack, production-ready **Retrieval-Augmented Generation (RAG)** system for academic research. It lets you upload multiple research PDFs and ask complex questions across all of them — receiving detailed, inline-cited answers grounded exclusively in the uploaded documents.
 
 The system implements a **multi-stage RAG pipeline** far beyond simple vector search:
 
@@ -139,8 +139,8 @@ Your Question
 
 ```bash
 # Clone the repo
-git clone https://github.com/Mdhummad/nexus-rag.git
-cd nexus-rag
+git clone https://github.com/uvais-malik/research_paper_analyser.git
+cd research_paper_analyser
 
 # Install backend dependencies
 cd backend && npm install
@@ -255,7 +255,7 @@ GET https://your-backend.onrender.com/api/health
 ## 📁 Project Structure
 
 ```
-nexus-rag/
+research_paper_analyser/
 ├── backend/
 │   ├── src/
 │   │   ├── server.js              # Express app, boot sequence
@@ -298,4 +298,4 @@ Pull requests welcome! Please open an issue first to discuss what you'd like to 
 
 ## 📄 License
 
-MIT © [Mdhummad](https://github.com/Mdhummad)
+MIT © [uvais-malik](https://github.com/uvais-malik)
