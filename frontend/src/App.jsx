@@ -356,7 +356,7 @@ function EmptyState({ paperCount }) {
             Upload a research paper to begin
           </div>
           <div style={{ fontSize: 14, color: "rgba(255,255,255,0.35)", maxWidth: 320, lineHeight: 1.6 }}>
-            Nexus RAG uses multi-query expansion, MMR re-ranking, and LLM re-ranking to give you precise, cited answers.
+            ScholarMind RAG uses multi-query expansion, MMR re-ranking, and LLM re-ranking to give you precise, cited answers.
           </div>
         </div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
@@ -640,7 +640,7 @@ export default function App() {
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
             <img
               src="/logo.png"
-              alt="Nexus RAG"
+              alt="ScholarMind RAG"
               style={{
                 width: 40, height: 40, borderRadius: 10,
                 boxShadow: "0 4px 16px rgba(124,58,237,0.5)",
