@@ -2,7 +2,7 @@ import { ChatGroq } from "@langchain/groq";
 import { pipeline } from "@xenova/transformers";
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
-const LLM_MODEL = process.env.LLM_MODEL || "llama-3.1-8b-instant";
+const LLM_MODEL = process.env.LLM_MODEL || "llama3-8b-8192";
 const EMBED_MODEL = process.env.EMBEDDING_MODEL || "Xenova/all-MiniLM-L6-v2";
 
 if (!GROQ_API_KEY) {
